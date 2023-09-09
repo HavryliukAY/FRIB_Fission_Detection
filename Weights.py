@@ -16,10 +16,6 @@ DATA_DIR = tf.keras.utils.get_file(
 )
 DATA_DIR = os.path.join(os.path.dirname(DATA_DIR), "ModelNet10")
 
-
-
-
-
 ############
 #chair_t = 'chair_bathtub'
 chair_t = 'dresser_chair' # 2 classes that we use to train PointNet model, there is no much difference in which two classes do you choose 
@@ -91,16 +87,11 @@ def parse_dataset(num_points=num_points):
 
 #########################
 
-
-NUM_POINTS = num_points
-    
-
-
+NUM_POINTS = num_points    
 
 train_points, test_points, train_labels, test_labels, CLASS_MAP = parse_dataset(
     NUM_POINTS
 )
-
 
 #########################
 
@@ -122,7 +113,6 @@ def conv_bn(x, filters):
     x = layers.Conv1D(filters, kernel_size=1, padding="valid")(x)
     x = layers.BatchNormalization(momentum=0.0)(x)
     return layers.Activation("relu")(x)
-
 
 def dense_bn(x, filters):
     x = layers.Dense(filters)(x)
